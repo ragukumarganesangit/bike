@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 
 @Service
 public class HerokuNotIdle {
-    
+
     @PostConstruct
     @Scheduled(cron = "* * * * * *")
     public void herokuNotIdle()
