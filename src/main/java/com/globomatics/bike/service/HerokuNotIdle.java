@@ -14,8 +14,7 @@ public class HerokuNotIdle {
     public void herokuNotIdle()
     {
         RestTemplate restTemplate = new RestTemplate();
-        Bike forObject = restTemplate.getForObject("https://bikesurveryweb.herokuapp.com/admin", Bike.class);
-        System.out.println(forObject);
+        restTemplate.getForObject("https://bikesurveryweb.herokuapp.com/admin", String.class);
     }
 
 }
