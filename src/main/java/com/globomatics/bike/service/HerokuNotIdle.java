@@ -1,24 +1,21 @@
 package com.globomatics.bike.service;
 
-import org.slf4j.LoggerFactory;
+import com.globomatics.bike.models.Bike;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import javax.annotation.PostConstruct;
 
-import java.util.logging.Logger;
-
+@Service
 public class HerokuNotIdle {
-
-    private static final Logger LOG = (Logger) LoggerFactory.getLogger(HerokuNotIdle.class);
-
+    
+    @PostConstruct
     @Scheduled(cron = "* * * * * *")
-    public void herokuNotIdle(){
+    public void herokuNotIdle()
+    {
         RestTemplate restTemplate = new RestTemplate();
-        try{
-            restTemplate.getForObject("https://bikesurveryweb.herokuapp.com/admin", Object.class);
-        }
-        catch(Exception e){
-            LOG.warning("Heroku Not Idle Service goes wrong");
-        }
+        Bike forObject = restTemplate.getForObject("https://bikesurveryweb.herokuapp.com/admin", Bike.class);
+        System.out.println(forObject);
     }
 
 }
