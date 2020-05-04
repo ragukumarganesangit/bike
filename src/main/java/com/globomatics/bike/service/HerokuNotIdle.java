@@ -10,7 +10,7 @@ public class HerokuNotIdle {
 
     private static final Logger LOG = (Logger) LoggerFactory.getLogger(HerokuNotIdle.class);
 
-    @Scheduled(fixedDelay =  120000)  //calls every 2 mins
+    @Scheduled(cron = "* * * * * *")
     public void herokuNotIdle(){
         RestTemplate restTemplate = new RestTemplate();
         try{
