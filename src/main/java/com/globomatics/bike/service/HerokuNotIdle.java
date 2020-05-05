@@ -1,6 +1,5 @@
 package com.globomatics.bike.service;
 
-import com.globomatics.bike.models.Bike;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -10,7 +9,7 @@ import javax.annotation.PostConstruct;
 public class HerokuNotIdle {
 
     @PostConstruct
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(fixedDelay=120000)  //every 2 mins
     public void herokuNotIdle()
     {
         RestTemplate restTemplate = new RestTemplate();
